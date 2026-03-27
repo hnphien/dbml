@@ -1,7 +1,7 @@
 import type { DbmlExporterOptions } from './DbmlExporter';
 import type { JsonExporterOptions } from './JsonExporter';
 
-export type ExportFormat = 'dbml' | 'mysql' | 'postgres' | 'json' | 'mssql' | 'oracle';
+export type ExportFormat = 'dbml' | 'mysql' | 'postgres' | 'json' | 'mssql' | 'oracle' | 'snowflake';
 
 export type ExportOptions =
   Partial<DbmlExporterOptions> &
