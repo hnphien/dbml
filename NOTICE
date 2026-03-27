@@ -1,0 +1,9 @@
+Datarelax DBML
+Copyright 2025-present Datarelax
+
+This product includes software developed by Holistics (https://holistics.io/).
+Original project: https://github.com/holistics/dbml
+Licensed under the Apache License, Version 2.0.
+
+Modifications made by Datarelax:
+- Added Snowflake DDL export support (@dbml/core)

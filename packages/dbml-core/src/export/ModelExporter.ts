@@ -4,6 +4,7 @@ import PostgresExporter from './PostgresExporter';
 import JsonExporter from './JsonExporter';
 import SqlServerExporter from './SqlServerExporter';
 import OracleExporter from './OracleExporter';
+import SnowflakeExporter from './SnowflakeExporter';
 import Database from '../model_structure/database';
 import type { NormalizedModel } from '../../types/model_structure/database';
 import { ExportOptions, ExportFormat, normalizeExportOptions } from './index';
@@ -66,6 +67,10 @@ class ModelExporter {
 
       case 'oracle':
         res = OracleExporter.export(normalizedModel);
+        break;
+
+      case 'snowflake':
+        res = SnowflakeExporter.export(normalizedModel);
         break;
 
       default:

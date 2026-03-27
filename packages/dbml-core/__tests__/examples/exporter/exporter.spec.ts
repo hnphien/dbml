@@ -33,6 +33,7 @@ describe('@dbml/core - exporter', () => {
     postgres_exporter: 'postgres',
     mssql_exporter: 'mssql',
     oracle_exporter: 'oracle',
+    snowflake_exporter: 'snowflake',
   } as const;
 
   for (const [exporter, type] of Object.entries(spec)) {

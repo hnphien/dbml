@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "@dbml/core",
-  "version": "6.5.0",
-  "description": "> TODO: description",
-  "author": "Holistics <dev@holistics.io>",
+  "name": "@datarelaxnpmtest/dbml-core",
+  "version": "7.0.0",
+  "description": "Add snowflake to dbml/core",
+  "author": "Datarelax <dev@datarelax.io>",
   "license": "Apache-2.0",
-  "homepage": "https://dbml.dbdiagram.io",
-  "repository": "https://github.com/holistics/dbml/tree/master/packages/dbml-core",
+  "homepage": "https://datarelax.io",
+  "repository": "https://github.com/datarelax/dbml/tree/master/packages/dbml-core",
   "keywords": [
     "dbml",
     "dbml-core"
@@ -40,7 +40,7 @@
     "bench": "vitest bench",
     "build:parser": "node src/parse/deprecated/buildParser.cjs",
     "build:lib": "vite build",
-    "build": "rm -rf ./lib && npm run build:parser && npm run build:lib",
+    "build": "npx rimraf ./lib && npm run build:parser && npm run build:lib",
     "prepublish": "npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
