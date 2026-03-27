@@ -1,15 +1,73 @@
-# @dbml/core
+# @datarelaxnpmtest/dbml-core
 
-Refer to [@dbml/core](https://dbml.dbdiagram.io/js-module/core) for the complete API reference.
+A fork of [@dbml/core](https://dbml.dbdiagram.io/js-module/core) with added **Snowflake DDL export** support.
+
+> **Original project:** [holistics/dbml](https://github.com/holistics/dbml) — Licensed under Apache-2.0.
+
+## What's New
+
+- ✅ **Snowflake DDL export** — Generate Snowflake-compatible `CREATE TABLE`, `ALTER TABLE`, `COMMENT ON`, and `INSERT` statements from DBML
 
 ## Installation
 
 ```bash
-npm install @dbml/core
+npm install @datarelaxnpmtest/dbml-core
 
 # or if you're using yarn
-yarn add @dbml/core
+yarn add @datarelaxnpmtest/dbml-core
 ```
+
+## Usage
+
+```js
+const { exporter, importer } = require('@datarelaxnpmtest/dbml-core');
+
+// DBML → Snowflake DDL
+const dbml = `
+Table users {
+  id integer [pk, increment]
+  name varchar
+  status user_status
+}
+
+Enum user_status {
+  active
+  inactive
+}
+`;
+
+const snowflake = exporter.export(dbml, 'snowflake');
+console.log(snowflake);
+// CREATE TABLE "users" (
+//   "id" INT AUTOINCREMENT PRIMARY KEY,
+//   "name" varchar,
+//   "status" VARCHAR NOT NULL CHECK ("status" IN ('active', 'inactive'))
+// );
+```
+
+### All Supported Export Formats
+
+```js
+const postgres  = exporter.export(dbml, 'postgres');
+const mysql     = exporter.export(dbml, 'mysql');
+const mssql     = exporter.export(dbml, 'mssql');
+const oracle    = exporter.export(dbml, 'oracle');
+const snowflake = exporter.export(dbml, 'snowflake');  // ← NEW
+const json      = exporter.export(dbml, 'json');
+const dbmlOut   = exporter.export(dbml, 'dbml');
+```
+
+### Snowflake Export Details
+
+| Feature | Snowflake Behavior |
+|---|---|
+| ENUMs | `VARCHAR NOT NULL CHECK ("col" IN (...))` (no native ENUM) |
+| Auto-increment | `AUTOINCREMENT` |
+| Foreign keys | Standard `ALTER TABLE ... ADD FOREIGN KEY` (no `DEFERRABLE`) |
+| Indexes | Omitted (Snowflake uses automatic micro-partitioning) |
+| Identifiers | Double-quoted (`"table_name"`) |
+| Comments | `COMMENT ON TABLE/COLUMN` |
+| Schemas | `CREATE SCHEMA "name"` |
 
 ## SQL Parser Feature Support
 
