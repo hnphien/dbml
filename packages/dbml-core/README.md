@@ -1,4 +1,4 @@
-# @datarelaxnpmtest/dbml-core
+# @datarelaxio/dbml-core
 
 A fork of [@dbml/core](https://dbml.dbdiagram.io/js-module/core) with added **Snowflake DDL export** support.
 
@@ -11,16 +11,16 @@ A fork of [@dbml/core](https://dbml.dbdiagram.io/js-module/core) with added **Sn
 ## Installation
 
 ```bash
-npm install @datarelaxnpmtest/dbml-core
+npm install @datarelaxio/dbml-core
 
 # or if you're using yarn
-yarn add @datarelaxnpmtest/dbml-core
+yarn add @datarelaxio/dbml-core
 ```
 
 ## Usage
 
 ```js
-const { exporter, importer } = require('@datarelaxnpmtest/dbml-core');
+const { exporter, importer } = require('@datarelaxio/dbml-core');
 
 // DBML → Snowflake DDL
 const dbml = `
