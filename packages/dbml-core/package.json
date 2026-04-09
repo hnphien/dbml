@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@datarelaxio/dbml-core",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Add snowflake to dbml/core",
   "author": "Datarelax <support@datarelax.io>",
   "license": "Apache-2.0",
